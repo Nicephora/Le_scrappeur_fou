@@ -19,6 +19,4 @@ last_names << depute.split[2..-1].join(" ")
 emails_deputes << "#{depute.split[1].downcase.gsub(/[èéêë]/, "e").gsub(/[òóôõö]/,'o').gsub(/[ùúûü]/,'u').gsub(/[éàôêë]/, "").gsub(/ç/, 'c').gsub(/[àáâãäå]/,'a')}#{depute.split[2..-1].join("-").downcase.gsub(/[èéêë]/, "e").gsub(/[òóôõö]/,'o').gsub(/[ùúûü]/,'u').gsub(/[éàôêë]/, "").gsub(/ç/, 'c').gsub(/[àáâãäå]/,'a')}@assemblee-nationale.fr"
 end
 
-final_result = []
-final_result << first_names << last_names
-print final_result
+print emails_deputes
