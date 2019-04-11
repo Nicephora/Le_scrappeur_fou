@@ -12,7 +12,7 @@ On vous a concocté des petits codes pour aujourdhui pleine de méthodes Def :
                                           
 👉  Apéro "Dark Trader" : chopper de la cryptomonnaie sur internet pour Lehman Brothers.
 
-👉  En Entrée  "Mairie christmas" : à la rencontre des maires du Val de L'Oise!! :) Super non? 
+👉  En Entrée  "Mairie christmas" : à la rencontre des maires du Val d'Oise!! :) Super non? 
 
 👉  Plat principal "Cher député" : il est plus dur de trouver un député sur les bancs de l'Assemblée que son adresse mail.
 
