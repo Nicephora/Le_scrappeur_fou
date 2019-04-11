@@ -1,34 +1,51 @@
-require 'rubygems'
 require 'nokogiri'
 require 'open-uri'
 
+# Obtention de la liste des villes
+def get_city
+  city_array = []
+  Nokogiri::HTML(open("http://annuaire-des-mairies.com/val-d-oise.html")).css("a.lientxt").each do |city|
+    city_array << city.text
+  end
+  print city_array
+  return city_array
 
+end
+
+# Obtention des urls par la liste des villes
+def get_townhall_urls (city_array)
+  city_townhall_urls = city_array.map do |ville| #création des liens html
+    "http://annuaire-des-mairies.com/95/#{ville.downcase.gsub(" ", "-")}.html"
+  end
+  puts city_townhall_urls
+  return city_townhall_urls
+end
+
+# Obtention des adresse email par les urls des mairies
 def get_townhall_email(townhall_url)
-  mail_sample = []
+  townhall_email_array= []
   townhall_url.each do |url|
-    code_html = Nokogiri::HTML(open(url))
-    mail_sample << code_html.css("td")[7].text
+    townhall_email_array <<  Nokogiri::HTML(open(url)).css("td")[7].text
   end
-  puts mail_sample.length
-  print mail_sample
-  return mail_sample
+  print townhall_email_array
+  return townhall_email_array
+end
+
+# Mise en forme
+def formulemagique ( townhall_email_array, city_array)
+  final_array = []
+  for n in (0..city_array.size-1) do
+    final_array << { city_array[n] => townhall_email_array[n]}
+  end
+  print final_array
+  return final_array
 end
 
 
-
-def get_townhall_urls (page)
-  val_doise = page.css("a.lientxt")
-  townhall_url = []
-  val_doise.each do |ville|
-      townhall_url << "http://annuaire-des-mairies.com#{ville['href'][1..-1]}"
-  end
-  return townhall_url
-end
 
 def perform
-  page = Nokogiri::HTML(open("http://annuaire-des-mairies.com/val-d-oise.html"))
-  url_array = get_townhall_urls(page)
-  get_townhall_email(url_array)
+  formulemagique (get_townhall_email (get_townhall_urls (get_city))),get_city
 end
 
 perform
+Collapse
