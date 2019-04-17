@@ -48,4 +48,3 @@ def perform
 end
 
 perform
-Collapse
